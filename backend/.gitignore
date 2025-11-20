@@ -1,0 +1,39 @@
+# ============================
+# FASTAPI / PYTHON
+# ============================
+
+# Bytecode
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+.venv/
+env/
+*.env
+.env.*
+!env.example
+
+# Packaging
+build/
+dist/
+*.egg-info/
+pip-wheel-metadata/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs
+*.log
+
+# Databases
+*.db
+*.sqlite3
+
+# IDE
+.vscode/
+.idea/
