@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MultiFerramentas",
+  title: "Omni",
   description: "Multiferramentas de Robert Alves",
 };
 
