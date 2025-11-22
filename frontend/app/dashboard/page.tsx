@@ -105,7 +105,7 @@ export default function DashboardPage() {
             </CardHeader>
             <CardContent>
               <ol className="list-decimal ml-4 text-sm space-y-1">
-                <li>Clique em "Testar Refresh Token"</li>
+                <li>Clique em Testar Refresh Token</li>
                 <li>Recarregue a página e continue logado</li>
                 <li>Feche e abra o navegador: ainda logado</li>
                 <li>Logout apenas ao clicar ou após expiração</li>

@@ -32,14 +32,14 @@ export default function LoginPage() {
     try {
       await login(email, password)
     } catch (err) {
-      setError("Email ou senha incorretos")
+      setError(`Email ou senha incorretos ${err}`)
     } finally {
       setLoading(false)
     }
   }
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 relative overflow-hidden">
+    <div className="flex justify-center items-center min-h-screen bg-linear-to-br from-slate-950 via-slate-900 to-slate-950 relative overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(120,119,198,0.15),rgba(255,255,255,0))]"></div>
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -48,11 +48,11 @@ export default function LoginPage() {
       <Card className="w-full max-w-md relative z-10 border-slate-800 bg-slate-900/90 backdrop-blur-xl shadow-2xl">
         <CardHeader className="space-y-3">
           <div className="flex justify-center mb-2">
-            <div className="p-3 rounded-2xl bg-gradient-to-br from-purple-500 to-blue-500">
+            <div className="p-3 rounded-2xl bg-linear-to-br from-purple-500 to-blue-500">
               <Lock className="h-8 w-8 text-white" />
             </div>
           </div>
-          <CardTitle className="text-3xl text-center font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+          <CardTitle className="text-3xl text-center font-bold bg-linear-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
             Login Seguro
           </CardTitle>
           <CardDescription className="text-center text-slate-400 text-base">
@@ -104,7 +104,7 @@ export default function LoginPage() {
 
             <Button 
               onClick={handleSubmit}
-              className="w-full h-12 text-base font-semibold bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 transition-all duration-300 shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 hover:scale-[1.02] active:scale-[0.98]" 
+              className="w-full h-12 text-base font-semibold bg-linear-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 transition-all duration-300 shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 hover:scale-[1.02] active:scale-[0.98]" 
               disabled={loading}
             >
               {loading ? (

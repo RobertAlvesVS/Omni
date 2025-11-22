@@ -15,15 +15,15 @@ export class APIClient {
   }
 
   async fetch(endpoint: string, options: RequestInit = {}): Promise<Response> {
-    let token = this.getAccessToken()
+    const token = this.getAccessToken()
 
     const makeRequest = async (accessToken: string | null) => {
-      const headers: HeadersInit = {
-        ...options.headers,
+      const headers: Record<string, string> = {
+        ...(options.headers as Record<string, string>),
       }
 
       if (accessToken) {
-        headers['Authorization'] = `Bearer ${accessToken}`
+        headers.Authorization = `Bearer ${accessToken}`
       }
 
       return fetch(`${this.baseURL}${endpoint}`, {
@@ -50,7 +50,7 @@ export class APIClient {
 // Hook para usar o API Client
 export function useAPIClient() {
   const { accessToken, refreshAccessToken } = useAuth()
-  
+
   return new APIClient(
     () => accessToken,
     refreshAccessToken
