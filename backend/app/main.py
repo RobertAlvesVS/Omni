@@ -7,7 +7,7 @@ from app.users.routes import router_user
 from app.auth.routes import router_auth
 from app.schemas import Mensagem
 
-app = FastAPI()
+app = FastAPI(root_path="/api")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:3000"],  # URL do seu Next.js
