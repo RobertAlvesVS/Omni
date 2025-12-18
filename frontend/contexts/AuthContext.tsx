@@ -33,7 +33,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // Tenta restaurar a sessão ao montar o componente
   useEffect(() => {
     const initAuth = async () => {
-      console.log('🔄 Tentando restaurar sessão...')
       const token = await refreshAccessToken()
       if (token) {
         await fetchUserData(token)
@@ -55,16 +54,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
       if (response.ok) {
         const userData = await response.json()
-        console.log('✅ Dados do usuário carregados:', userData)
         setUser(userData)
         setAccessToken(token)
       } else {
-        console.log('❌ Falha ao buscar dados do usuário')
         setAccessToken(null)
         setUser(null)
       }
     } catch (error) {
-      console.error('❌ Erro ao buscar dados do usuário:', error)
       setAccessToken(null)
       setUser(null)
     }
@@ -80,14 +76,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
       if (response.ok) {
         const data = await response.json()
-        console.log('✅ Token renovado com sucesso')
         setAccessToken(data.access_token)
         return data.access_token
       }
-      console.log('⚠️ Não foi possível renovar o token')
       return null
-    } catch (error) {
-      console.error('❌ Erro ao renovar token:', error)
+    } catch {
       return null
     }
   }
@@ -114,7 +107,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
 
     const data = await response.json()
-    console.log('✅ Login realizado com sucesso')
 
     // Access token fica APENAS em memória (não em localStorage!)
     setAccessToken(data.access_token)
@@ -134,9 +126,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         method: 'POST',
         credentials: 'include'
       })
-      console.log('✅ Logout realizado')
-    } catch (error) {
-      console.error('❌ Erro ao fazer logout:', error)
+    }catch{
+      router.push('/login')
+      setAccessToken(null)
+      setUser(null)
     }
 
     setAccessToken(null)
